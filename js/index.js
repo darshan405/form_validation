@@ -1,48 +1,47 @@
 // Wait for the DOM to be ready
 $(document).ready(function(){
-$(function() {
-  
-  $("form[name='registration']").validate({
-   
-    rules: {
-      
-      firstname: "required",
-      lastname: "required",
-      email: {
-        required: true,
-        
-        email: true
-      },
-      password: {
-        required: true,
-        minlength: 8
-      },
-      cnfpassword: {
-        required: true,
-        minlength: 8
-      }
+  $(function() {
 
-    },
-    
-    messages: {
-      firstname: "Please enter your firstname",
-      lastname: "Please enter your lastname",
-      password: {
-        required: "Please provide a password",
-        minlength: "Your password must be at least 8 characters long"
+    $("form[name='registration']").validate({
+
+      rules: {
+
+        firstname: "required",
+        lastname: "required",
+        email: {
+          required: true,
+
+          email: true
+        },
+        password: {
+          required: true,
+          minlength: 8
+        },
+        cnfpassword: {
+          required: true,
+          minlength: 8
+        }
+
       },
-      cnfpassword: {
-        required: "Please confirm a password",
-        minlength: "Your password must be at least 8 characters long"
+      messages: {
+        firstname: "Please enter your firstname",
+        lastname: "Please enter your lastname",
+        password: {
+          required: "Please provide a password",
+          minlength: "Your password must be at least 8 characters long"
+        },
+        cnfpassword: {
+          required: "Please confirm a password",
+          minlength: "Your password must be at least 8 characters long"
+        },
+        email: "Please enter a valid email address"
       },
-      email: "Please enter a valid email address"
-    },
-    
-    submitHandler: function(form) {
-      form.submit();
-    }
+
+      submitHandler: function(form) {
+        form.submit();
+      }
+    });
   });
-});
 // function checkPasswordMatch() {
 //     debugger;
 //     var password = $("#password").val();
@@ -56,34 +55,34 @@ $(function() {
 //       }
 // }
 $("#cnpassword").keyup(function() {
-        var password = $("#password").val();
-        $("#divCheckPasswordMatch").html(password == $(this).val() ? "Passwords match." : "Passwords do not match!");
-    });
+  var password = $("#password").val();
+  $("#divCheckPasswordMatch").html(password == $(this).val() ? "Passwords match." : "Passwords do not match!");
+});
 
 (function ($) {
-    $.toggleShowPassword = function (options) {
-        var settings = $.extend({
-            field: "#password",
-            control: "#toggle_show_password",
-        }, options);
+  $.toggleShowPassword = function (options) {
+    var settings = $.extend({
+      field: "#password",
+      control: "#toggle_show_password",
+    }, options);
 
-        var control = $(settings.control);
-        var field = $(settings.field)
+    var control = $(settings.control);
+    var field = $(settings.field)
 
-        control.bind('click', function () {
-            if (control.is(':checked')) {
-                field.attr('type', 'text');
-            } else {
-                field.attr('type', 'password');
-            }
-        })
-    };
+    control.bind('click', function () {
+      if (control.is(':checked')) {
+        field.attr('type', 'text');
+      } else {
+        field.attr('type', 'password');
+      }
+    })
+  };
 }(jQuery));
 
 //Here how to call above plugin from everywhere in your application document body
 $.toggleShowPassword({
-    field: '#password',
-    control: '#test2'
+  field: '#password',
+  control: '#test2'
 });
 
 });
